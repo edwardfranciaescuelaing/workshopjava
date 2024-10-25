@@ -12,7 +12,7 @@ Este repositorio contiene una aplicación web básica de Spring, configuración 
 6. Despliegue en AWS
 7. Subida de Imagen a DockerHub
 8. Pruebas
-9. Capturas de Pantalla y Logs
+9. Capturas de Pantalla
 
 ---
 
@@ -126,21 +126,24 @@ Sigue estos pasos para subir tu imagen de Docker a DockerHub:
 
 ## Pruebas
 
+Para probar en local se debe acceder a localhost y puertp 33025 seguido del endpoint greeting
+
+
+![image](https://github.com/user-attachments/assets/60f647c8-5456-4bd1-9e34-585f295c6ffa)
+
+
 La opción de pruebas para el sistema es en el link de acceso de AWS con el puerto 42000 y debe aparecer una imagen como esta
+![image](https://github.com/user-attachments/assets/104e63a5-a797-4d70-a4dc-684534069910)
 
 ![image](https://github.com/user-attachments/assets/41e13bf7-4a32-4b8c-9500-caff8b11662b)
 
 
 ---
 
-## Capturas de Pantalla y Logs
-
-![image](https://github.com/user-attachments/assets/f30c9c71-c085-41f0-a1e8-9626008854de)
-
-
 ### Capturas de Pantalla
 
 Aquí tienes una captura de pantalla que muestra la aplicación Spring en ejecución:
+![image](https://github.com/user-attachments/assets/1d76ae80-177e-4610-9c73-1ce2eab7cbe2)
 
 ![image](https://github.com/user-attachments/assets/5fd95dc5-332f-4eb9-bb98-edfb2b09617f)
 
