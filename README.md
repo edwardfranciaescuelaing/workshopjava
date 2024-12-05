@@ -29,10 +29,10 @@ Para ejecutar el contenedor de la aplicación Spring en tu entorno local, sigue 
 2. Luego, ejecuta el contenedor con el siguiente comando:
 
    ```
-   docker run -p 8080:8080 spring-app:1.0
+   docker run -p 42000:15600 spring-app:1.0
    ```
 
-3. Ahora, puedes acceder a la aplicación visitando `http://localhost:8080/greeting` en tu navegador web. Verás una respuesta JSON con el mensaje de saludo.
+3. Ahora, puedes acceder a la aplicación visitando `http://localhost:42000/greeting` en tu navegador web. Verás una respuesta JSON con el mensaje de saludo.
 
 4. Para ver los logs del contenedor mientras está en ejecución:
 
@@ -54,7 +54,7 @@ Docker Compose permite orquestar contenedores de forma más sencilla, definiendo
      web:
        image: spring-app:1.0
        ports:
-         - "8080:8080"
+         - "42000:15600"
    ```
 
 2. Ejecuta el siguiente comando para iniciar la aplicación con Docker Compose:
@@ -83,18 +83,25 @@ Docker Compose permite orquestar contenedores de forma más sencilla, definiendo
      docker push <dockerhub-username>/spring-app:1.0
      ```
 
-3. **Configurar la tarea en ECS**:
-   - Crea una definición de tarea en ECS.
-   - Proporciona la URL de la imagen de Docker desde DockerHub o ECR.
-   - Configura los recursos y el número de tareas que deseas ejecutar.
+3. **Configurar EC2**:
+   - Ejecutar los siguientes comandos para instalar manejador de paquetes yum, control de repositorios git y docker para el manejo de imagenes y contenedores
+   - Por ultimo asignamos el usuario al grupo de docker para ejecución de los comandos sin usar sudo
+     ```
+     sudo yum update -y
+     sudo yum install git -y
+     sudo yum install docker
+     sudo usermod -a -G docker ec2-user
+     ```
 
-4. **Configurar las reglas de seguridad**:
-   - Configura el grupo de seguridad de la instancia EC2 para permitir tráfico en el puerto 8080 (o cualquier otro puerto que hayas expuesto).
-   - Asegúrate de que las instancias de EC2 estén configuradas con una política de IAM que les permita extraer imágenes de Docker desde el registro.
-
-5. **Iniciar el servicio**:
-   - Inicia el servicio ECS para ejecutar las tareas basadas en tu definición.
-   - Accede a la aplicación en la dirección pública del clúster de ECS.
+4. **Configurar docker en EC2**:
+   - Ejecutar los siguientes comandos el primero ejecuta docker
+   - El segundo es para comprobar la ejecución
+   - Finalmente corremos el contenedor
+     ```
+     sudo service docker start
+     docker images
+     docker run -p 42000:15600 spring-app:1.0
+     ```
 
 ---
 
