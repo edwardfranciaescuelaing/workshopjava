@@ -73,11 +73,11 @@ Docker Compose permite orquestar contenedores de forma más sencilla, definiendo
 
 1. **Crear un clúster de ECS en AWS**:
    - Accede a la consola de AWS y navega a ECS.
-   - Crea un nuevo clúster y selecciona "EC2 Linux + Networking" para desplegar contenedores en instancias EC2.
+   - Crea un nuevo clúster y selecciona "AWS linux" para desplegar contenedores en instancias EC2.
+   - Genera un par de claves y ten en cuenta que no se pueden borrar o sino se pierde el acceso al EC2
 
 2. **Subir la imagen a un repositorio**:
-   - Sube la imagen de Docker a DockerHub o Amazon ECR (Elastic Container Registry).
-   - Si prefieres DockerHub, utiliza el siguiente comando:
+   - Sube la imagen de Docker a DockerHub.
      ```
      docker tag spring-app:1.0 <dockerhub-username>/spring-app:1.0
      docker push <dockerhub-username>/spring-app:1.0
